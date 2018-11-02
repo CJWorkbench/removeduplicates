@@ -1,0 +1,21 @@
+{
+  "name": "Remove duplicates",
+  "id_name": "removeduplicates",
+  "category" : "Clean",
+  "description": "",
+  "icon": "clean",
+  "help_url":"",
+  "parameters": [
+    {
+      "name": "Find duplicates in",
+      "id_name": "colnames",
+      "type": "multicolumn"
+    },
+    {
+      "name": "and",
+      "id_name": "type",
+      "type": "menu",
+      "menu_items": "Delete duplicate rows|Count duplicates in new column"
+    }
+  ]
+}
