@@ -1,6 +1,6 @@
 import pandas as pd
 
-count_col_name = 'Duplicate count'
+count_col_name = 'Cumulative count'
 
 def removeduplicates(table, colnames, type):
     try:
@@ -14,16 +14,10 @@ def removeduplicates(table, colnames, type):
         idx = mask[~mask].index
         return table.loc[idx].reset_index(drop=True) # reset index for testing
 
-    # Add duplicate labels
+    # Add duplicate cumulative count
     elif type == 1:
-        # group duplicates and shift index to use as count
-        groups = table.groupby(colnames).count()
-        groups = pd.DataFrame(list(groups.index), columns=colnames).reset_index()
-
-        # left join to add group count
-        new_table = pd.merge(table, groups, on=colnames, how='left')
-
-        return new_table.rename(index=str, columns={'index': count_col_name}).reset_index(drop=True) # reset index for testing
+        table[count_col_name] = table.groupby(colnames).cumcount() + 1
+        return table
 
     return table
 
