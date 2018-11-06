@@ -15,7 +15,7 @@
       "name": "and",
       "id_name": "type",
       "type": "menu",
-      "menu_items": "Delete duplicate rows|Count duplicates in new column"
+      "menu_items": "Delete duplicate rows|Number duplicates in new column"
     }
   ]
 }
