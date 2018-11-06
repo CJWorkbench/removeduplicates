@@ -1,6 +1,6 @@
 import pandas as pd
 
-count_col_name = 'Cumulative count'
+count_col_name = 'Duplicate number'
 
 def removeduplicates(table, colnames, type):
     try:
