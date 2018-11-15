@@ -1,10 +1,10 @@
 {
-  "name": "Deduplicates",
+  "name": "Deduplicate",
   "id_name": "removeduplicates",
   "category" : "Clean",
   "description": "",
   "icon": "clean",
-  "help_url":"modules/add-data/concatenate",
+  "help_url":"modules/clean/deduplicate",
   "parameters": [
     {
       "name": "Find duplicates in",
