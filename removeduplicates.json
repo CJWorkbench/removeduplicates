@@ -2,7 +2,7 @@
   "name": "Deduplicate",
   "id_name": "removeduplicates",
   "category" : "Clean",
-  "description": "",
+  "description": "Delete duplicate rows by comparing values in one or several columns",
   "icon": "clean",
   "help_url":"modules/clean/deduplicate",
   "parameters": [
