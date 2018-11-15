@@ -4,7 +4,7 @@
   "category" : "Clean",
   "description": "",
   "icon": "clean",
-  "help_url":"",
+  "help_url":"modules/add-data/concatenate",
   "parameters": [
     {
       "name": "Find duplicates in",
