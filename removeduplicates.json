@@ -1,5 +1,5 @@
 {
-  "name": "Remove duplicates",
+  "name": "Deduplicates",
   "id_name": "removeduplicates",
   "category" : "Clean",
   "description": "",
