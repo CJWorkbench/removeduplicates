@@ -1,6 +1,6 @@
 import pandas as pd
 
-count_col_name = 'Duplicate number'
+count_col_name = 'Duplicate number'  # TODO "Duplicate count"?
 
 def removeduplicates(table, colnames, type):
     try:
@@ -12,7 +12,13 @@ def removeduplicates(table, colnames, type):
     if type == 0:
         mask = sub_table.duplicated()
         idx = mask[~mask].index
-        return table.loc[idx].reset_index(drop=True) # reset index for testing
+        table = table.loc[idx]
+        table.reset_index(drop=True, inplace=True) # reset index for testing
+        # Reset categories, for testing
+        for column in table.columns:
+            series = table[column]
+            if hasattr(series, 'cat'):
+                series.cat.remove_unused_categories(inplace=True)
 
     # Add duplicate cumulative count
     elif type == 1:
