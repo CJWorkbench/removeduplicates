@@ -1,37 +1,45 @@
 import pandas as pd
 
-count_col_name = 'Duplicate number'  # TODO "Duplicate count"?
 
-def removeduplicates(table, colnames, type):
-    try:
-        sub_table = table[colnames]
-    except KeyError as err:
-        return 'You chose a missing column'
-
-    # Greedy drop duplicate rows, only keep first instance
-    if type == 0:
-        mask = sub_table.duplicated()
-        idx = mask[~mask].index
-        table = table.loc[idx]
-        table.reset_index(drop=True, inplace=True) # reset index for testing
+def removeduplicates(table, colnames, action):
+    if action == 'delete':
+        # Greedy drop duplicate rows, only keep first instance
+        mask = table[colnames].duplicated()
+        table = table[~mask]
+        table.reset_index(drop=True, inplace=True)
         # Reset categories, for testing
         for column in table.columns:
             series = table[column]
             if hasattr(series, 'cat'):
                 series.cat.remove_unused_categories(inplace=True)
-
-    # Add duplicate cumulative count
-    elif type == 1:
-        table[count_col_name] = table.groupby(colnames).cumcount() + 1
         return table
-
-    return table
+    elif action == 'cumcount':
+        table['Duplicate number'] = table.groupby(colnames).cumcount() + 1
+        return table
+    else:
+        raise ValueError('Unknown action %s' % action)
 
 
 def render(table, params):
-    colnames = list([c for c in params['colnames'].split(',') if c])
-    type = params['type']
-    if not colnames:
+    if not params['colnames']:
         return table
 
-    return removeduplicates(table, colnames, type)
+    return removeduplicates(table, params['colnames'], params['action'])
+
+
+def _migrate_params_v0_to_v1(params):
+    """
+    v0: colnames is comma-separated str, type is 0|1 (delete|cumcount).
+
+    v1: colnames is List[str], action is delete|cumcount.
+    """
+    return {
+        'colnames': [c for c in params['colnames'].split(',') if c],
+        'action': ['delete', 'cumcount'][params['type']]
+    }
+
+
+def migrate_params(params):
+    if isinstance(params['colnames'], str):
+        params = _migrate_params_v0_to_v1(params)
+    return params

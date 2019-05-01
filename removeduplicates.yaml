@@ -8,7 +8,11 @@ parameters:
 - id_name: colnames
   type: multicolumn
   name: Find duplicates in
-- id_name: type
+  deprecated_string_storage: false
+- id_name: action
   name: "and"
   type: menu
-  menu_items: "Delete duplicate rows|Number duplicates in new column"
+  default: delete
+  options:
+  - { value: delete, label: 'Delete duplicate rows' }
+  - { value: cumcount, label: 'Number duplicates in new column' }
