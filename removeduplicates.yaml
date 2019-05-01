@@ -1,0 +1,14 @@
+id_name: removeduplicates
+name: Deduplicate
+category: Clean
+description: Delete duplicate rows by comparing values in one or several columns
+icon: clean
+help_url: modules/clean/deduplicate
+parameters:
+- id_name: colnames
+  type: multicolumn
+  name: Find duplicates in
+- id_name: type
+  name: "and"
+  type: menu
+  menu_items: "Delete duplicate rows|Number duplicates in new column"
