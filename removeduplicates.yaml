@@ -8,7 +8,6 @@ parameters:
 - id_name: colnames
   type: multicolumn
   name: Find duplicates in
-  deprecated_string_storage: false
 - id_name: action
   name: "and"
   type: menu
