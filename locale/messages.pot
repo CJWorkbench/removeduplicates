@@ -1,0 +1,24 @@
+#. default-message: Deduplicate
+msgid "_spec.name"
+msgstr ""
+
+#. default-message: Delete duplicate rows by comparing values in one or several columns
+msgid "_spec.description"
+msgstr ""
+
+#. default-message: Find duplicates in
+msgid "_spec.parameters.colnames.name"
+msgstr ""
+
+#. default-message: and
+msgid "_spec.parameters.action.name"
+msgstr ""
+
+#. default-message: Delete duplicate rows
+msgid "_spec.parameters.action.options.delete.label"
+msgstr ""
+
+#. default-message: Number duplicates in new column
+msgid "_spec.parameters.action.options.cumcount.label"
+msgstr ""
+
